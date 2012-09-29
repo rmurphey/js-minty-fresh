@@ -7,12 +7,13 @@ function showPeople(people) {
 
     $('<button>', {
       id: 'button_' + person.id,
-      text: 'Remove ' + person.name,
-      click: function(e) {
-        e.preventDefault();
-        var id = $(this).attr('id').replace('button_', '');
-        $('#person_' + id).remove();
-      }
+      text: 'Remove ' + person.name
     }).appendTo('#buttons');
+
+    $('#buttons button').click(function(e) {
+      e.preventDefault();
+      var id = $(this).attr('id').replace('button_', '');
+      $('#person_' + id).remove();
+    })
   });
 }
