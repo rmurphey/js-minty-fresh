@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>JS Minty Fresh</title>
+
+		<meta name="description" content="JS Minty Fresh">
+		<meta name="author" content="Rebecca Murphey">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <link href='http://fonts.googleapis.com/css?family=Signika:400,600,700,300' rel='stylesheet' type='text/css'>
+
+		<link rel="stylesheet" href="css/main.css">
+		<link rel="stylesheet" href="css/theme/default.css">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/monokai.css">
+
+    <link rel="stylesheet" href="css/rm.css">
+
+		<script>
+			// If the query includes 'print-pdf' we'll use the PDF print sheet
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Used to fade in a background when a specific slide state is reached -->
+			<div class="state-background"></div>
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section class="title-slide">
+					<h1>JS Minty Fresh</h1>
+					<h3>Eliminating Code Smells <br>in&nbsp;Your JavaScript</h3>
+				</section>
+
+        <section class="centered" data-markdown>
+          <p><img src="img/bocoup.png" class="clean" alt="Bocoup" height="300"></p>
+
+          [@rmurphey](http://twitter.com/rmurphey)&nbsp;&nbsp;☆&nbsp;&nbsp;[rmurphey.com](http://rmurphey.com)
+
+          [bocoup.com](http://bocoup.com)
+        </section>
+
+        <section data-markdown>
+          ## Smells
+
+          - WET code
+          - HTML in your JavaScript
+          - Async gymnastics
+        </section>
+
+        <section data-markdown>
+          ## What&rsquo;s the harm?
+
+          - debugging is harder
+          - maintainability suffers
+          - features are harder to add
+          - obscured opportunity
+        </section>
+
+        <section data-markdown>
+          ## Eliminating smells takes time, but ...
+
+          - features get easier to add
+          - you become a better developer
+        </section>
+
+        <section>
+          <section class="oneliner">
+            <h2>The Smell: Repetitive&nbsp;Code</h2>
+            <p>The Fix: Objects</p>
+          </section>
+
+          <section>
+            <script type="data/example" src="/examples/dry-objects/busted.js"></script>
+          </section>
+
+          <section>
+            <script type="data/example" src="/examples/dry-objects/awesomer.js"></script>
+          </section>
+        </section>
+
+        <section>
+          <section class="oneliner">
+            <h2>The Smell: Repetitive&nbsp;Code</h2>
+            <p>The Fix: functions</p>
+          </section>
+
+          <section>
+            <script type="data/example" src="/examples/dry-functions/busted.js"></script>
+          </section>
+
+          <section>
+            <script type="data/example" src="/examples/dry-functions/awesomer.js"></script>
+          </section>
+        </section>
+
+        <section>
+          <section class="oneliner">
+            <h2>The Smell: Complex&nbsp;Functions</h2>
+            <p>The Fix: More &amp; Smaller Functions</p>
+          </section>
+
+          <section>
+            <script type="data/example" src="/examples/complex-function/busted.js"></script>
+          </section>
+
+          <section>
+            <script type="data/example" src="/examples/complex-function/awesomer.js"></script>
+          </section>
+        </section>
+
+        <section>
+          <section class="oneliner">
+            <h2>The Smell: HTML in Your JS</h2>
+            <p>The Fix: Templates</p>
+          </section>
+
+          <section>
+            <script type="data/example" src="/examples/templates/busted.js"></script>
+          </section>
+
+          <section>
+            <script type="data/example" src="/examples/templates/awesomer.js"></script>
+          </section>
+        </section>
+
+        <section>
+          <section class="oneliner">
+            <h2>The Smell: Async Acrobatics</h2>
+            <p>The Fix: Deferreds</p>
+          </section>
+
+          <section>
+            <script type="data/example" src="/examples/deferreds/busted.js"></script>
+          </section>
+
+          <section>
+            <script type="data/example" src="/examples/deferreds/awesomer.js"></script>
+          </section>
+        </section>
+			</div>
+
+			<!-- The navigational controls UI -->
+			<aside class="controls">
+				<a class="left" href="#">&#x25C4;</a>
+				<a class="right" href="#">&#x25BA;</a>
+				<a class="up" href="#">&#x25B2;</a>
+				<a class="down" href="#">&#x25BC;</a>
+			</aside>
+
+			<!-- Presentation progress bar -->
+			<div class="progress"><span></span></div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+    <script src="lib/js/highlight.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+        rollingLinks: false,
+        mouseWheel: false,
+
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/linear(2d)
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'lib/js/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'lib/js/data-markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'socket.io/socket.io.js', async: true, condition: function() { return window.location.host === 'localhost:1947'; } },
+					{ src: 'plugin/speakernotes/client.js', async: true, condition: function() { return window.location.host === 'localhost:1947'; } },
+				]
+			});
+
+		</script>
+
+    <script src="/js/vendor/jquery.js"></script>
+
+    <script>
+      $('script[type="data/example"]').each(function() {
+        var script = $(this);
+        var src = script.attr('src')
+        var div = script.parent();
+
+        var dest = $('<pre>');
+        var code = $('<code contenteditable="true">').appendTo(dest);
+
+        $.ajax(src, { dataType : 'text'}).done(function(content) {
+          code.text(content);
+          window.hljs.highlightBlock( dest.appendTo(div)[0] );
+        });
+      });
+    </script>
+	</body>
+</html>
