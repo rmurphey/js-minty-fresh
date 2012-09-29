@@ -42,7 +42,7 @@ body .reveal .slides {
 
 .reveal code {
   font-family: Menlo, Consolas, sans-serif;
-  max-height: 600px;
+  max-height: 400px;
   overflow-y: auto;
 }
 
@@ -85,8 +85,8 @@ body .reveal .slides {
 .reveal h4 { font-size: 40px; font-weight: 600; }
 
 .reveal .title-slide h1 {
-  font-size: 150px;
-  margin-bottom: 20px;
+  font-size: 120px;
+  margin: 80px 0 20px;
 }
 
 .reveal img.clean {

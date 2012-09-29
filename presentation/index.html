@@ -54,28 +54,19 @@
           [bocoup.com](http://bocoup.com)
         </section>
 
-        <section data-markdown>
-          ## Smells
+        <section data-markdown class="oneliner">
+          ## what&rsquo;s the harm?
 
-          - WET code
-          - HTML in your JavaScript
-          - Async gymnastics
-        </section>
-
-        <section data-markdown>
-          ## What&rsquo;s the harm?
-
+          <aside class="notes">
           - debugging is harder
           - maintainability suffers
           - features are harder to add
           - obscured opportunity
+          </aside>
         </section>
 
-        <section data-markdown>
-          ## Eliminating smells takes time, but ...
-
-          - features get easier to add
-          - you become a better developer
+        <section data-markdown class="oneliner">
+          ## premature optimization?
         </section>
 
         <section>
@@ -85,10 +76,12 @@
           </section>
 
           <section>
+            <h4>busted</h4>
             <script type="data/example" src="/examples/dry-objects/busted.js"></script>
           </section>
 
           <section>
+            <h4>awesomer</h4>
             <script type="data/example" src="/examples/dry-objects/awesomer.js"></script>
           </section>
         </section>
@@ -96,15 +89,34 @@
         <section>
           <section class="oneliner">
             <h2>The Smell: Repetitive&nbsp;Code</h2>
-            <p>The Fix: functions</p>
+            <p>The Fix: Functions</p>
           </section>
 
           <section>
+            <h4>busted</h4>
             <script type="data/example" src="/examples/dry-functions/busted.js"></script>
           </section>
 
           <section>
+            <h4>awesomer</h4>
             <script type="data/example" src="/examples/dry-functions/awesomer.js"></script>
+          </section>
+        </section>
+
+        <section>
+          <section class="oneliner">
+            <h2>The Smell: Generated&nbsp;IDs</h2>
+            <p>The Fix: Closures</p>
+          </section>
+
+          <section>
+            <h4>busted</h4>
+            <script type="data/example" src="/examples/numbered-things/busted.js"></script>
+          </section>
+
+          <section>
+            <h4>awesomer</h4>
+            <script type="data/example" src="/examples/numbered-things/awesomer.js"></script>
           </section>
         </section>
 
@@ -115,40 +127,46 @@
           </section>
 
           <section>
+            <h4>busted</h4>
             <script type="data/example" src="/examples/complex-function/busted.js"></script>
           </section>
 
           <section>
+            <h4>awesomer</h4>
             <script type="data/example" src="/examples/complex-function/awesomer.js"></script>
           </section>
         </section>
 
         <section>
           <section class="oneliner">
-            <h2>The Smell: HTML in Your JS</h2>
+            <h2>The Smell: HTML <br>in Your JavaScript</h2>
             <p>The Fix: Templates</p>
           </section>
 
           <section>
+            <h4>busted</h4>
             <script type="data/example" src="/examples/templates/busted.js"></script>
           </section>
 
           <section>
+            <h4>awesomer</h4>
             <script type="data/example" src="/examples/templates/awesomer.js"></script>
           </section>
         </section>
 
         <section>
           <section class="oneliner">
-            <h2>The Smell: Async Acrobatics</h2>
+            <h2>The Smell: <br>Async Acrobatics</h2>
             <p>The Fix: Deferreds</p>
           </section>
 
           <section>
+            <h4>busted</h4>
             <script type="data/example" src="/examples/deferreds/busted.js"></script>
           </section>
 
           <section>
+            <h4>awesomer</h4>
             <script type="data/example" src="/examples/deferreds/awesomer.js"></script>
           </section>
         </section>
@@ -204,7 +222,7 @@
         var src = script.attr('src')
         var div = script.parent();
 
-        var dest = $('<pre>');
+        var dest = $('<pre class="language-javascript">');
         var code = $('<code contenteditable="true">').appendTo(dest);
 
         $.ajax(src, { dataType : 'text'}).done(function(content) {
