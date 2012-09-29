@@ -1,37 +1,30 @@
 // sane-er code
 var priceInfo = {};
-var priceHtml = getPrice(priceInfo);
-var discountHtml = getDiscount(priceInfo);
+var priceHtml = getPriceHtml(priceInfo);
+var discountHtml = getDiscountHtml(priceInfo);
 
 updateRow(row, priceHtml, discountHtml);
 
-function getDiscount(priceInfo) {
-  var txt;
+function getDiscountHtml(priceInfo) {
+  var txt = '';
 
-  if (
-    priceInfo.discountPrice &&
-    priceInfo.standardPrice &&
-    priceInfo.savings
-  ) {
-
-    if (priceInfo.discountPrice == '$0.00') {
-      txt += 'FREE!';
-    }
-    if (priceInfo.isProrated) {
-      txt += '*';
-    } else if (priceInfo.isDeferred) {
-      txt += '**';
-    }
-
-    if (txt) {
-      return '<strong>' + txt + '</strong>';
-    }
+  if (priceInfo.discountPrice == '$0.00') {
+    txt += 'FREE!';
   }
 
-  return '<img src="/img/loading.gif" />';
+  if (priceInfo.isProrated) {
+    txt += '*';
+  }
+
+  if (priceInfo.isDeferred) {
+    txt += '**';
+  }
+
+  return txt ? ('<strong>' + txt + '</strong>') :
+    '<img src="/img/loading.gif" />';
 }
 
-function getPrice(priceInfo) {
+function getPriceHtml(priceInfo) {
   if (!priceInfo.standardPrice) {
     return '';
   }
