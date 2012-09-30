@@ -84,6 +84,10 @@ body .reveal .slides {
 .reveal h3 { font-size: 65px; font-weight: 600; }
 .reveal h4 { font-size: 40px; font-weight: 600; }
 
+.reveal h4 {
+  margin: 30px 0 5px 0;
+}
+
 .reveal .title-slide h1 {
   font-size: 120px;
   margin: 80px 0 20px;
