@@ -1,4 +1,3 @@
-// a function that does too many things
 function showPrice(row, standardPrice, discountPrice, savings, isProrated, isDeferred) {
 
   var priceCol = row.find('td.price').eq(0);

@@ -1,4 +1,3 @@
-// sane-er code
 var priceInfo = {};
 var priceHtml = getPriceHtml(priceInfo);
 var discountHtml = getDiscountHtml(priceInfo);

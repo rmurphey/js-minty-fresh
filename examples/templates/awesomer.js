@@ -13,8 +13,7 @@
 
 <% }); %>
 </script>
-
- */
+*/
 
 function createTasksHtml(tasks) {
   var template = $('#tasks_template').text();
