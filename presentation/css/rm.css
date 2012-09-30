@@ -101,8 +101,8 @@ body .reveal .slides {
 }
 
 .reveal em {
-  color: hsl(329, 88%, 50%);
-  font-style: normal;
+  /* color: hsl(329, 88%, 50%); */
+  font-style: italic;
   font-weight: normal;
 }
 

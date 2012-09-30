@@ -10,10 +10,10 @@ function showPeople(people) {
       text: 'Remove ' + person.name
     }).appendTo('#buttons');
 
-    $('#buttons button').click(function(e) {
+    $('#buttons').on('click', 'button', function(e) {
       e.preventDefault();
       var id = $(this).attr('id').replace('button_', '');
       $('#person_' + id).remove();
-    })
+    });
   });
 }
