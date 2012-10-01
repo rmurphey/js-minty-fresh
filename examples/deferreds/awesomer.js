@@ -1,13 +1,21 @@
 function getSomeThings(callback) {
-  var peopleRequest = $.getJSON('/data/people.json')
-                        .pipe(function(data) {
-                          return data.people;
-                        });
+  var people, tasks;
 
-  var tasksRequest = $.getJSON('/data/tasks.json')
-                        .pipe(function(data) {
-                          return data.tasks;
-                        });
+  var peopleRequest = $.ajax('/data/people.json', {
+    dataType: 'json',
+    success: function(data) {
+      people = data.people;
+    }
+  });
 
-  $.when(peopleRequest, tasksRequest).then(callback);
+  var taskRequest = $.ajax('/data/tasks.json', {
+    dataType: 'json',
+    success: function(data) {
+      tasks = data.tasks;
+    }
+  });
+
+  $.when( peopleRequest, taskRequest ).done(function() {
+    callback( people, tasks );
+  });
 }

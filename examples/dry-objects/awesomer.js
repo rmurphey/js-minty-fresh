@@ -17,7 +17,7 @@ function selectedLocation() {
       lng : -6.262207,
       zoom : 9
     }
-  }
+  };
 
   var location = locations[ selected ];
   var center = new google.maps.LatLng( location.lat, location.lng );

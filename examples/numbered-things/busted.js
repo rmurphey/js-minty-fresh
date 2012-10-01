@@ -9,11 +9,11 @@ function showPeople(people) {
       id: 'button_' + person.id,
       text: 'Remove ' + person.name
     }).appendTo('#buttons');
+  });
 
-    $('#buttons').on('click', 'button', function(e) {
-      e.preventDefault();
-      var id = $(this).attr('id').replace('button_', '');
-      $('#person_' + id).remove();
-    });
+  $('#buttons button').on('click', function(e) {
+    e.preventDefault();
+    var id = $(this).attr('id').replace('button_', '');
+    $('#person_' + id).remove();
   });
 }

@@ -5,14 +5,12 @@ function showPeople(people) {
     }).appendTo('#people');
 
     $('<button>', {
-      text: 'Remove ' + person.name
+      text: 'Remove ' + person.name,
+      click: function(e) {
+        e.preventDefault();
+        li.remove();
+      }
     })
-    .appendTo('#buttons')
-    .data('li', li);
-
-    $('#buttons').on('click', 'button', function(e) {
-      e.preventDefault();
-      $(this).data('li').remove();
-    });
+    .appendTo('#buttons');
   });
 }
