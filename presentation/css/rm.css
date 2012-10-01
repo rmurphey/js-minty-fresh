@@ -156,3 +156,8 @@ body .reveal .slides {
 .reveal aside.notes {
   display: none;
 }
+::selection {
+  background:#FFE528;
+  color:#000;
+  text-shadow: none;
+}
