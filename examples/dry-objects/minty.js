@@ -1,5 +1,5 @@
 function selectedLocation() {
-  var selected = document.getElementById("countyLocation").value;
+  var selected = document.getElementById( "countyLocation" ).value;
 
   var locations = {
     "Ireland" : {

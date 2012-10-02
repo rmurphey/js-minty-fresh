@@ -1,16 +1,16 @@
-function getSomeThings(callback) {
+function getSomeThings( callback ) {
   var people, tasks;
 
-  var peopleRequest = $.ajax('/data/people.json', {
+  var peopleRequest = $.ajax( '/data/people.json', {
     dataType: 'json',
-    success: function(data) {
+    success: function( data ) {
       people = data.people;
     }
   });
 
-  var taskRequest = $.ajax('/data/tasks.json', {
+  var taskRequest = $.ajax( '/data/tasks.json', {
     dataType: 'json',
-    success: function(data) {
+    success: function( data ) {
       tasks = data.tasks;
     }
   });

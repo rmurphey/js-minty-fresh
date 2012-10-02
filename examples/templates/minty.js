@@ -15,13 +15,13 @@
 </script>
 */
 
-function createTasksHtml(tasks) {
-  var template = $('#tasks_template').text();
+function createTasksHtml( tasks ) {
+  var template = $( '#tasks_template' ).text();
 
-  tasks = $.map(tasks, function(entryIndex, task) {
+  tasks = $.map( tasks, function( entryIndex, task ) {
     var classes = {
-      2 : 'urgent',
-      5 : 'very_urgent'
+      2: 'urgent',
+      5: 'very_urgent'
     };
 
     task.s_class = classes[ entry.status_id ] || 'normal';
@@ -30,5 +30,5 @@ function createTasksHtml(tasks) {
     return task;
   });
 
-  $('#tasks').append( _.template(tasks_template, tasks) );
+  $( '#tasks' ).append( _.template( tasks_template, tasks ) );
 }
