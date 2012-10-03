@@ -1,4 +1,4 @@
-function getSomeThings( callback ) {
+function getTwoThings( callback ) {
   var peopleRequest = $.getJSON( '/data/people.json' )
                         .pipe(function( resp ) {
                           return resp.people;
