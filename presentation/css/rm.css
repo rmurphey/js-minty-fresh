@@ -47,7 +47,7 @@ body .reveal .slides {
 }
 
 .reveal a:not(.image) {
-  color: #ECDB13;
+  color: #A3FF00;
 }
 
 .reveal .slides section {
@@ -67,8 +67,10 @@ body .reveal .slides {
 
 .reveal code {
   font-family: Menlo, Consolas, sans-serif;
-  max-height: 400px;
+  max-height: 500px;
   overflow-y: auto;
+  line-height: 1.4em;
+  font-size: 110%;
 }
 
 .reveal pre.thin {
