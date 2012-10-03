@@ -1,3 +1,28 @@
+@font-face {
+  font-family: 'Signika';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Signika-Light'), url(fonts/signika-light.woff) format('woff');
+}
+@font-face {
+  font-family: 'Signika';
+  font-style: normal;
+  font-weight: 600;
+  src: local('Signika-Semibold'), url(fonts/signika-semi.woff) format('woff');
+}
+@font-face {
+  font-family: 'Signika';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Signika'), local('Signika-Regular'), url(fonts/signika.woff) format('woff');
+}
+@font-face {
+  font-family: 'Signika';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Signika-Bold'), url(fonts/signika-bold.woff) format('woff');
+}
+
 body {
   background: -webkit-radial-gradient(center, ellipse cover, rgba(44, 180, 61, 1) 0%,rgba(46, 77, 36, 1) 100%);
 }
