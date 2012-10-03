@@ -1,22 +1,27 @@
-function createTasksHtml(tasks) {
+function populateTaskList() {
+  $.getJSON( '/data/tasks.json', function(resp) {
 
-  $.each(tasks, function(entryIndex, entry) {
-    var s_class;
+    var tasks = resp.tasks;
 
-    switch (this.status_id) {
-      case 2:
-        s_class = 'urgent';
-        break;
-      case 5:
-        s_class = 'very_urgent';
-        break;
-      default:
-        s_class = 'normal';
-        break;
-    }
+    $.each(tasks, function(entryIndex, entry) {
+      var s_class;
 
-    var tasks_ops = '<div id="d' + entryIndex + '" class="' + s_class + '"><input type="checkbox" id="c' + entryIndex + '" value="' + entryIndex + '" class="c_' + s_class + '"/> ' + this.task + '</div>';
+      switch (this.status_id) {
+        case 2:
+          s_class = 'urgent';
+          break;
+        case 5:
+          s_class = 'very_urgent';
+          break;
+        default:
+          s_class = 'normal';
+          break;
+      }
 
-    $('#tasks').append(tasks_ops);
+      var tasks_ops = '<div id="d' + entryIndex + '" class="' + s_class + '"><input type="checkbox" id="c' + entryIndex + '" value="' + entryIndex + '" class="c_' + s_class + '"/> ' + this.task + '</div>';
+
+      $('#tasks').append(tasks_ops);
+    });
   });
+
 }

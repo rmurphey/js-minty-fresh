@@ -1,27 +1,10 @@
-function getSomeThings( callback ) {
-  var completed = 0;
-  var people, tasks;
+function getTwoThings( callback ) {
+  $.getJSON( '/data/people.json', function( data ) {
+    var people = data.people;
 
-  $.ajax( '/data/people.json', {
-    dataType: 'json',
-    success: function( data ) {
-      completed++;
-      people = data.people;
-      onFinished();
-    }
+    $.getJSON( '/data/tasks.json', function( data ) {
+      var tasks = data.tasks;
+      callback( people, tasks );
+    });
   });
-
-  $.ajax( '/data/tasks.json', {
-    dataType: 'json',
-    success: function( data ) {
-      completed++;
-      tasks = data.tasks;
-      onFinished();
-    }
-  });
-
-  function onFinished() {
-    if ( completed < 2 ) { return; }
-    callback( people, tasks );
-  }
 }

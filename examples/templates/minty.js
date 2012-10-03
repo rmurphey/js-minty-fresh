@@ -15,20 +15,24 @@
 </script>
 */
 
-function createTasksHtml( tasks ) {
-  var template = $( '#tasks_template' ).text();
+function populateTaskList() {
+  var template = _.template( $( '#tasks_template' ).text() );
 
-  tasks = $.map( tasks, function( entryIndex, task ) {
-    var classes = {
-      2: 'urgent',
-      5: 'very_urgent'
-    };
+  var tasks = $.getJSON( '/data/tasks.json' ).pipe(function(resp) {
+    return $.map( resp.tasks, function( entryIndex, task ) {
+      var classes = {
+        2: 'urgent',
+        5: 'very_urgent'
+      };
 
-    task.s_class = classes[ entry.status_id ] || 'normal';
-    task.index = entryIndex;
+      task.s_class = classes[ entry.status_id ] || 'normal';
+      task.index = entryIndex;
 
-    return task;
+      return task;
+    });
   });
 
-  $( '#tasks' ).append( _.template( tasks_template, tasks ) );
+  tasks.done(function(t) {
+    $( '#tasks' ).append( template(t) );
+  });
 }
