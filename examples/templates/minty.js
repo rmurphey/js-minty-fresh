@@ -17,8 +17,15 @@
 
 function populateTaskList() {
   var template = _.template( $( '#tasks_template' ).text() );
+  var tasksRequest = getTasks();
 
-  var tasks = $.getJSON( '/data/tasks.json' ).pipe(function(resp) {
+  tasksRequest.done(function(tasks) {
+    $( '#tasks' ).append( template(tasks) );
+  });
+}
+
+function getTasks() {
+  return $.getJSON( '/data/tasks.json' ).pipe(function(resp) {
     return $.map( resp.tasks, function( entryIndex, task ) {
       var classes = {
         2: 'urgent',
@@ -30,9 +37,5 @@ function populateTaskList() {
 
       return task;
     });
-  });
-
-  tasks.done(function(t) {
-    $( '#tasks' ).append( template(t) );
   });
 }
