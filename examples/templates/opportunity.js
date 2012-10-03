@@ -33,10 +33,10 @@ app.Tasks = {
   },
 
   populate : function() {
-    $.when(
+    return $.when(
       app.getTemplate( 'tasks' ),
       app.Tasks.fetch()
-    ).then(function(tmpl, tasks) {
+    ).done(function(tmpl, tasks) {
       $( app.Tasks.target ).append( tmpl(tasks) );
     });
   }
