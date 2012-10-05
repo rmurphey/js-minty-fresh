@@ -1,10 +1,16 @@
 function getTwoThings( callback ) {
-  $.getJSON( '/data/people.json', function( data ) {
-    var people = data.people;
+  $.ajax( '/data/people.json', {
+    dataType : 'json',
+    success : function( data ) {
+      var people = data.people;
 
-    $.getJSON( '/data/tasks.json', function( data ) {
-      var tasks = data.tasks;
-      callback( people, tasks );
-    });
+      $.ajax( '/data/tasks.json', {
+        dataType : 'json',
+        success : function( data ) {
+          var tasks = data.tasks;
+          callback( people, tasks );
+        }
+      });
+    }
   });
 }

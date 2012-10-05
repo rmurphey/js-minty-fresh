@@ -9,17 +9,13 @@ app.getTemplate = function( name ) {
   return app._templateCache[ name ];
 }
 
-app.Tasks = {
-  target : '#tasks',
-
+Tasks.collection = {
   fetch : function() {
-    return $.getJSON( '/data/tasks.json' ).pipe(function(resp){
-      return resp.tasks;
-    });
+    return $.getJSON( '/data/tasks.json' ).pipe( this.process );
   },
 
-  process : function() {
-    return $.map( tasks, function( entryIndex, task ) {
+  process : function( resp ) {
+    return $.map( resp.tasks, function( entryIndex, task ) {
       var classes = {
         2: 'urgent',
         5: 'very_urgent'
@@ -30,14 +26,18 @@ app.Tasks = {
 
       return task;
     });
-  },
+  }
+};
+
+Tasks.view = {
+  el : '#tasks',
 
   populate : function() {
     return $.when(
       app.getTemplate( 'tasks' ),
-      app.Tasks.fetch()
+      Tasks.collection.fetch()
     ).done(function(tmpl, tasks) {
-      $( app.Tasks.target ).append( tmpl(tasks) );
+      $( Tasks.view.el ).append( tmpl(tasks) );
     });
   }
 };
