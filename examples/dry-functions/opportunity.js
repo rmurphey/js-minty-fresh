@@ -1,11 +1,20 @@
-$.each({
-  '#menu-item-1' : '#start-date',
-  '#menu-item-2' : '#end-date'
-}, function( menuItem, datepicker ) {
-  var target = $( menuItem );
-  var date = $( datepicker ).datepicker( 'getDate' );
+// <fieldset id="menu-item-1" data-datepicker="#start-date">
+//   <span class="day"></span>
+//   <span class="month"></span>
+//   <span class="year"></span>
+// </fieldset>
 
-  target.find( '.day' ).text( date.getDate() );
-  target.find( '.month' ).text( Util.monthToText( date.getMonth() ) );
-  target.find( '.year' ).text( date.getFullYear() );
-});
+function updateDates () {
+  connectDatepicker( $('#menu-item-1') );
+  connectDatepicker( $('#menu-item-2') );
+
+  function connectDatepicker (target) {
+    var datepicker = $( target.attr('data-datepicker') );
+    var date = datepicker.datepicker('getDate');
+
+    target.find('.day').text( date.getDate() );
+    target.find('.month').text( Util.monthToText( date.getMonth() ) );
+    target.find('.year').text( date.getFullYear() );
+  }
+}
+

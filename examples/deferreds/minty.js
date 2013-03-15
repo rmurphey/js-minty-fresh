@@ -1,9 +1,22 @@
-function getTwoThings( callback ) {
-  var peopleRequest = $.getJSON( '/data/people.json' );
-  var taskRequest = $.getJSON( '/data/tasks.json' );
+function getSomeThings (callback) {
+  var people, tasks;
 
-  $.when( peopleRequest, taskRequest )
-    .done(function( people, tasks ) {
-      callback( people[0].people, tasks[0].tasks );
-    });
+  var peopleRequest = $.ajax('/data/people.json', {
+    dataType: 'json',
+    success: function (data) {
+      people = data.people;
+    }
+  });
+
+  var taskRequest = $.ajax('/data/tasks.json', {
+    dataType: 'json',
+    success: function (data) {
+      tasks = data.tasks;
+    }
+  });
+
+  $.when(peopleRequest, taskRequest).done(function () {
+    callback(people, tasks);
+  });
 }
+

@@ -15,27 +15,33 @@
 </script>
 */
 
-function populateTaskList() {
-  var template = _.template( $( '#tasks_template' ).text() );
-  var tasksRequest = getTasks();
+function createTasksHtml (tasks) {
+  var template = $('#tasks_template').text();
 
-  tasksRequest.done(function(tasks) {
-    $( '#tasks' ).append( template(tasks) );
+  tasks = $.map(tasks, function (entryIndex, task) {
+    var classes = {
+      2: 'urgent',
+      5: 'very_urgent'
+    };
+
+    task.s_class = classes[entry.status_id] || 'normal';
+    task.index = entryIndex;
+
+    return task;
   });
+
+  $('#tasks').append( _.template(tasks_template, tasks) );
 }
 
-function getTasks() {
-  return $.getJSON( '/data/tasks.json' ).pipe(function(resp) {
-    return $.map( resp.tasks, function( entryIndex, task ) {
-      var classes = {
-        2: 'urgent',
-        5: 'very_urgent'
-      };
+// OPPORTUNITY: hosted templates w/caching
 
-      task.s_class = classes[ entry.status_id ] || 'normal';
-      task.index = entryIndex;
+function getTemplate (name) {
+  window._templateCache = window._templateCache || {};
 
-      return task;
-    });
-  });
+  if (!window._templateCache[name]) {
+    window._templateCache[name] =
+      $.get('/templates/' + name).pipe(_.template);
+  }
+
+  return window._templateCache[name];
 }

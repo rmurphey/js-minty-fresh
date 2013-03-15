@@ -1,4 +1,4 @@
-function showPrice(row, standardPrice, discountPrice, savings, isProrated, isDeferred) {
+function showPrice (row, standardPrice, discountPrice, savings, isProrated, isDeferred) {
 
   var priceCol = row.find('td.price').eq(0);
   var discountCol = row.find('td.price').eq(1);
@@ -31,4 +31,4 @@ function showPrice(row, standardPrice, discountPrice, savings, isProrated, isDef
   discountCol.html(txt);
 }
 
-showPrice(row, null, null, null, null, null);
+
