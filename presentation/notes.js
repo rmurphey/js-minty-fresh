@@ -12,21 +12,8 @@
  * Senior Software Engineer at Bazaarvoice
  * @rmurphey • rmurphey.com
  *
- *****************************************************************************
+ *****************************************************************************/
 
- # What's that smell?
-
- - code smells are easy to spot
- - code smells are suggestive of a bigger problem
-
- # What's the harm?
-
- - debugging is harder
- - maintainability suffers
- - features are harder to add
- - *smells obscure opportunity*
-
- ****************************************************************************/
 
 
 
@@ -78,10 +65,10 @@ function updateDates () {
 // THE FIX: functions
 
 function updateDates () {
-  updateDate( $('#menu-item-1'), $('#start-date') );
-  updateDate( $('#menu-item-2'), $('#end-date') );
+  connectDatepicker( $('#menu-item-1'), $('#start-date') );
+  connectDatepicker( $('#menu-item-2'), $('#end-date') );
 
-  function updateDate (target, datepicker) {
+  function connectDatepicker (target, datepicker) {
     var date = datepicker.datepicker('getDate');
 
     target.find('.day').text( date.getDate() );
@@ -99,12 +86,18 @@ function updateDates () {
 
 
 // OPPORTUNITY: associate date picker via data- attr
+//
+// <fieldset id="menu-item-1" data-datepicker="#start-date">
+//   <span class="day"></span>
+//   <span class="month"></span>
+//   <span class="year"></span>
+// </fieldset>
 
 function updateDates () {
-  updateDate( $('#menu-item-1') );
-  updateDate( $('#menu-item-2') );
+  connectDatepicker( $('#menu-item-1') );
+  connectDatepicker( $('#menu-item-2') );
 
-  function updateDate (target) {
+  function connectDatepicker (target) {
     var datepicker = $( target.attr('data-datepicker') );
     var date = datepicker.datepicker('getDate');
 
@@ -129,8 +122,10 @@ function updateDates () {
 
 // THE SMELL
 
+$('#countyLocation').change(selectedLocation);
+
 function selectedLocation() {
-  var selected = document.getElementById("countyLocation").value;
+  var selected = $('#countyLocation').val();
 
   if (selected == "Ireland") {
     var Ireland = new google.maps.LatLng(53.527248, -8.327637);
@@ -169,8 +164,10 @@ function selectedLocation() {
 
 // THE FIX: objects
 
+$('#countyLocation').change(selectedLocation);
+
 function selectedLocation () {
-  var selected = document.getElementById("countyLocation").value;
+  var selected = $('#countyLocation').val();
 
   var locations = {
     "Ireland" : {
@@ -208,9 +205,13 @@ function selectedLocation () {
 
 
 // OPPORTUNITY: load data from the server
+// - server-managed data!
+// - return a promise -- more on that shortly
+
+$('#countyLocation').change(selectedLocation);
 
 function selectedLocation () {
-  var selected = document.getElementById("countyLocation").value;
+  var selected = $("#countyLocation").val();
 
   return $.get('/data/locations.json', function(locations) {
     var location = locations[selected];
@@ -297,26 +298,6 @@ function showPeople (people) {
 
 
 
-// OPPORTUNITY: store reference to li as data on button
-
-function showPeople (people) {
-  $.each( people, function (idx, person) {
-    var li = $('<li>', {
-      text: person.name
-    }).appendTo('#people');
-
-    $('<button>', {
-      text: 'Remove ' + person.name
-    })
-    .appendTo('#buttons')
-    .data('li', li);
-  });
-}
-
-$('#buttons').on('click', 'button', function (e) {
-  e.preventDefault();
-  $(this).data('li').remove();
-});
 
 
 
